@@ -60,7 +60,55 @@ else:
 # Задача 2
 print('=' * 40)
 print('Задача 2')
+money = int(input('Сколько денег на счету? '))
+price = 75000
+if money >= price:
+    money -= price
+    print('Курс успешно приобретён')
+    if money < 5000:
+        money += 1000
+        print('Сделана скидка')
+else:
+    print('Недостаточно денег.')
+print('Остаток на счету:', money)
+print('Хорошего дня!')
 
 # Задача 3
 print('=' * 40)
 print('Задача 3')
+price_cheece = 60
+price_ice_cream = 20
+money = int(input('Введите сумму, сколько дала мама Маше: '))
+if money >= price_cheece:
+    print('На сыр денег хватило')
+    money -= price_cheece
+    if money >= price_ice_cream:
+        print('И на мороженое тоже!')
+        money -= price_ice_cream
+    else:
+        print('Денег маловато')
+else:
+    print('Денег маловато')
+print('Осталось денег:', money)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
