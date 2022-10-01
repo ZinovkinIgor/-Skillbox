@@ -18,7 +18,7 @@ while True:
     score += 1
     num = num_min + ((num_max - num_min) // 2)
     print('Попытка', score, 'Ваше число', num)
-    result = int(input('Выбери ответ: (1 — равно, 2 — больше, 3 — меньше)'))
+    result = int(input('Выбери ответ: (1 — равно, 2 — больше, 3 — меньше) '))
     if result == 1:
         break
     elif result == 2:
