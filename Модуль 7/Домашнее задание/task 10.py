@@ -15,3 +15,17 @@
 Введите номер оставшейся карточки: 3
 Номер пропавшей карточки: 2
 """
+
+summ1, summ2 = 0, 0
+card = int(input('Введите количество карточек: '))
+for num in range(1, card + 1):
+    summ1 += num
+for _ in range(1, card):
+    num_card = int(input('Введите номер оставшейся карточки: '))
+    summ2 += num_card
+print('Номер пропавшей карточки:', summ1 - summ2)
+
+
+
+
+
