@@ -28,11 +28,35 @@ X мальчиков и Y девочек пошли в кинотеатр и к�
 boy = int(input('Введите количество мальчиков: '))
 girl = int(input('Введите количество девочек: '))
 res = ''
-for num in range(boy + girl):
-    if boy >= girl:
-        pass
-    elif boy < girl:
-        pass
-    else:
-        pass
-print('Ответ: ', res)
+if boy / 2 > girl or girl / 2 > boy:
+    res = 'Нет решения'
+elif boy // 2 == girl or boy > girl:
+    for _ in range(1, girl + 1):
+        if boy // 2 == girl or boy > girl:
+            res += 'BGB'
+            boy -= 2
+            girl -= 1
+        else:
+            res += 'BG'
+            boy -= 1
+            girl -= 1
+elif girl // 2 == boy or girl > boy:
+    for _ in range(1, boy + 1):
+        if girl // 2 == boy or girl > boy:
+            res += 'GBG'
+            boy -= 1
+            girl -= 2
+        else:
+            res += 'GB'
+            boy -= 1
+            girl -= 1
+else:
+    for _ in range(1, girl + 1):
+        res += 'GB'
+        boy -= 1
+        girl -= 1
+print('Ответ:', res)
+
+
+
+
