@@ -13,3 +13,19 @@
 Введите строку: ssbbbsssbc
 Самая длинная последовательность: 3
 """
+
+line = input('Введите строку: ')
+simbol = ''
+score1, score2 = 1, 0
+for new_simbol in line:
+    score1 += 1
+    if new_simbol == simbol:
+        if score1 > score2:
+            score2 = score1
+    else:
+        score1 = 1
+    simbol = new_simbol
+print('Самая длинная последовательность:', score2)
+
+
+
