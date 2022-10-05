@@ -16,5 +16,22 @@ for scor in range(1, number + 1):
       print(str(num), '\t', end='\t')
   print()
 
+print('=' * 20, 'ИЛИ', '=' * 20)
+new_num = 1
+for line in range(number):
+  for spece in range(number - line - 1, 0, -1):
+    print(end='   ')
+  for numb in range(line + 1):
+    print(new_num, end='    ')
+    new_num += 2
+  print()
 
-
+print('=' * 20, 'ИЛИ', '=' * 20)
+new_num = 1
+for line in range(number):
+  spece_count = number - line - 1
+  print('   ' * spece_count, end='')
+  for numb in range(line + 1):
+    print(new_num, end='    ')
+    new_num += 2
+  print()
