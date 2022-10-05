@@ -64,3 +64,13 @@ for row in range(1, numbers + 1):
         else:
             print('.', end='')
     print()
+
+print('=' * 20, 'ИЛИ', '=' * 20)
+for row in range(numbers):
+    for col in range(numbers, numbers - row - 1, - 1):
+        print(col, end='')
+    point_count = 2 * (numbers - row - 1)
+    print('.' * point_count, end='')
+    for col in range(numbers - row, numbers + 1):
+         print(col, end='')
+    print()
