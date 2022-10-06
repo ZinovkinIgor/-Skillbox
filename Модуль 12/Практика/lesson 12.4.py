@@ -63,3 +63,28 @@ adress('Ксюша', 'Сидорова', 'США', 'Хьюстон', 'Пушки
 # Задача 3
 print('=' * 40)
 print('Задача 3')
+
+import math
+
+def one_point(x_1, y_1):
+    distance = math.sqrt(x_1 ** 2 + y_1 ** 2)
+    print('Расстояние до точки:', distance)
+
+def two_dots(x_1, y_1, x_2, y_2):
+    distance = math.sqrt((x_2 - x_1) ** 2 + (y_2 - y_1) ** 2)
+    print('Расстояние между точками:', distance)
+
+answer = int(input('Выберите действие 1 - найти расстояние от себя до точки, 2 - найти расстояние между двумя произвольными точками: '))
+if answer == 1:
+    x_1 = int(input('Введите точку х: '))
+    y_1 = int(input('Введите точку y: '))
+    one_point(x_1, y_1)
+elif answer == 2:
+    x_1 = int(input('Введите точку х1: '))
+    y_1 = int(input('Введите точку y1: '))
+    x_2 = int(input('Введите точку х2: '))
+    y_2 = int(input('Введите точку y2: '))
+    two_dots(x_1, y_1, x_2, y_2)
+else:
+    print('Ошибка! Введены некорректные данные.')
+
