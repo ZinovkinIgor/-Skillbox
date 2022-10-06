@@ -8,3 +8,39 @@
 Напишите программу, запрашивающую у пользователя число и действие, которое нужно с ним сделать: вывести сумму
 его цифр, максимальную или минимальную цифру. Каждое действие оформите в виде отдельной функции, а основную программу зациклите.
 """
+
+def func_sum(numbers):
+    summ = 0
+    for num in str(numbers):
+        summ += int(num)
+    print('Сумма чисел:', summ)
+
+
+def func_min(numbers):
+    min_n = numbers
+    for num in str(numbers):
+        if min_n > int(num):
+            min_n = int(num)
+    print('Минимальное число:', min_n)
+
+def func_max(numbers):
+    max_n = 0
+    for num in str(numbers):
+        if max_n < int(num):
+            max_n = int(num)
+    print('Максимальное число:', max_n)
+
+while True:
+    answer = int(input('1. Вывести сумму чисел\n2. Вывести максимальную цифру\n3. Вывести минимальную цифру\nВыберите действие: '))
+    numbers = int(input('Введите число: '))
+    if answer == 1:
+        func_sum(numbers)
+    elif answer == 2:
+        func_max(numbers)
+    elif answer == 3:
+        func_min(numbers)
+    else:
+        print('Введите корректные данные.')
+
+
+
