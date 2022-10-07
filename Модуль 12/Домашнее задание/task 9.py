@@ -14,12 +14,58 @@
 import random
 
 def rock_paper_scissors():
-    games = int(input('Выберите: 1 - Камень, 2 - Ножницы, 3 - Бумага: '))
-    computer = random.randint(1, 3)
-    if
+    while True:
+        games = int(input('Выберите: 1 - Камень, 2 - Ножницы, 3 - Бумага: '))
+        computer = random.randint(1, 3)
+        if games == 1:
+            stone(computer)
+        elif games == 2:
+            scissors(computer)
+        elif games == 3:
+            paper(computer)
+        abswer = int(input('Ещё? 1 - да, 2 - нет'))
+        if abswer == 2:
+            break
+
+def stone(n):
+    if n == 1:
+        print('Игрок - Камень, Компьютер - Камень - Ничья')
+    elif n == 2:
+        print('Игрок - Камень, Компьютер - Ножницы - Победил игрок')
+    elif n == 3:
+        print('Игрок - Камень, Компьютер - Бумага - Победил компьютер')
+
+def scissors(n):
+    if n == 1:
+        print('Игрок - Ножницы, Компьютер - Камень - Победил компьютер')
+    elif n == 2:
+        print('Игрок - Ножницы, Компьютер - Ножницы - Ничья')
+    elif n == 3:
+        print('Игрок - Ножницы, Компьютер - Бумага - Победил игрок')
+
+def paper(n):
+    if n == 1:
+        print('Игрок - Бумага, Компьютер - Камень - Победил игрок')
+    elif n == 2:
+        print('Игрок - Бумага, Компьютер - Ножницы - Победил компьютер')
+    elif n == 3:
+        print('Игрок - Бумага, Компьютер - Бумага - Ничья')
+
 
 def guess_the_number():
-    pass
+    numb = random.randint(1, 100)
+    print('Сыграем в игру угадай число от 1 до 100')
+    while True:
+        numbers = int(input('Введите число: '))
+        if numbers == numb:
+            print('Ура! ты угадал!!!')
+            break
+        elif numbers > numb:
+            print('Мое число меньше.')
+        else:
+            print('Мое число больше.')
+    print('Загаданное число было:', numb)
+
 
 def mainMenu():
    choise = int(input('Выберите игру: 1 - "Камень, ножницы, бумага." 2 - "Угадай число": '))
