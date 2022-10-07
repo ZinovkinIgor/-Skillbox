@@ -18,3 +18,10 @@
 Кстати, нули, которые мы убрали, называются ведущими.
 """
 
+def func_number(n):
+    new_number = n[::-1]
+    print('Число наоборот:', new_number)
+    print('Программа завершена!')
+
+numbers = input('Введите число: ')
+func_number(numbers)
