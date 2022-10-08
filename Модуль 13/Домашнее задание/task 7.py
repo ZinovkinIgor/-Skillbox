@@ -17,13 +17,20 @@
 Введите максимально допустимый уровень опасности: 0.01
 Приблизительная глубина безопасной кладки: 0.732421875 м
 """
+def processing(danger, depth_min, depth_max):
+    depth = depth_min + (depth_max - depth_min) / 2
+    search_danger = depth ** 3 - 3 * depth ** 2 - 12 * depth + 10
+    while abs(search_danger) > danger:
+        if search_danger > 0:
+            depth_min = depth
+        else:
+            depth_max = depth
+        depth = depth_min + (depth_max - depth_min) / 2
+        search_danger = depth ** 3 - 3 * depth ** 2 - 12 * depth + 10
+    return depth
 
 
-
-
-
-
-
-
-
-
+danger = float(input('Введите максимально допустимый уровень опасности: '))
+depth_min, depth_max = 0, 4
+result = processing(danger, depth_min, depth_max)
+print('Приблизительная глубина безопасной кладки:', result, 'м')
