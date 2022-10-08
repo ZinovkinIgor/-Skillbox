@@ -39,14 +39,28 @@ False
 # Задача 1
 print('=' * 40)
 print('Задача 1')
-
+tax = float(input('Введите бюджет страны: '))
+new_tax = float(input('Новые поступления (налог):'))
+if tax + new_tax == tax:
+    print('Результат: Бюджет не изменится')
+else:
+    print('Результат: Бюджет увеличится')
 
 
 # Задача 2
 print('=' * 40)
 print('Задача 2')
 
+def func_numb(a, b, c):
+    if ((a + b) - c) < 1e-15:
+        print('True')
+    else:
+        print('False')
 
+numb_1 = float(input('Введите первое число: '))
+numb_2 = float(input('Введите второе число: '))
+numb_3 = float(input('Введите третье число: '))
+func_numb(numb_1, numb_2, numb_3)
 
 
 
