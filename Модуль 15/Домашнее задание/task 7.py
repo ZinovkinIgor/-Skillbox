@@ -23,3 +23,24 @@
 
 Номер, который получит новый контейнер: 3
 """
+
+score = int(input('Количество контейнеров: '))
+box_list = []
+new_box_list = []
+coint, numb = 0, 0
+while score > coint:
+    box = int(input('Введите вес контейнера: '))
+    if box < 200:
+        box_list.append(box)
+        coint += 1
+    else:
+        print('Вес не может превышать 200')
+
+new_box = int(input('Введите вес нового контейнера: '))
+for index in range(len(box_list)):
+    if new_box >= box_list[index]:
+        numb = index
+        break
+print('Номер, который получит новый контейнер:', numb + 1)
+
+
