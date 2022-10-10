@@ -126,11 +126,5 @@ elif task == 3:
     print('Полученное сообщение:', dekoder)
     print('Кол-во ошибок в сообщении:', dekoder.count(-1))
     print('Кол-во потерянных пакетов:', count_error)
-
-
-
-
-
-
 else:
     print('Выберите задачу заново.')
