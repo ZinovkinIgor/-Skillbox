@@ -33,11 +33,43 @@
 Сами числа: [4, 3, 2, 1]
 """
 
+def is_polindrom(new_list):
+    new_revers = []
+    for i_scor in range(len(new_list) -1, - 1, -1):
+        new_revers.append(new_list[i_scor])
+    if new_list == new_revers:
+        return True
+    else:
+        return False
+
+score = int(input('Кол-во чисел: '))
+numbers = []
+new_numbers = []
+answer = []
+
+for _ in range(score):
+    numbers.append(int(input('Число: ')))
+
+for i_num in range(len(numbers)):
+    for i_tem in range(i_num, len(numbers)):
+        new_numbers.append(numbers[i_tem])
+    if is_polindrom(new_numbers):
+        for num in range(0, i_num):
+            answer.append(numbers[num])
+        answer.reverse()
+        break
+    new_numbers = []
+print(numbers)
+print('Нужно приписать чисел:', len(answer))
+print('Сами числа:', answer)
+
+
+
+print('\n\n\ИЛИn\n')
 score = int(input('Кол-во чисел: '))
 numbers = []
 
-for i in range(score):
-    # query = str(i + 1) + ' число: '
+for _ in range(score):
     numbers.append(int(input('Число: ')))
 
 counter = 0
