@@ -20,3 +20,31 @@
 
 Наибольшее кол-во людей, которые могут взять ролики: 2
 """
+
+
+skates_list, human_list = [], []
+count = 0
+skates = int(input('Кол-во коньков: '))
+for num in range(1, skates + 1):
+    print('Размер', str(num) + '-й пары: ', end='')
+    couple = int(input())
+    skates_list.append(couple)
+human = int(input('\nКол-во людей: '))
+for num in range(1, human + 1):
+    print('Размер ноги', str(num) + '-го человека: ', end='')
+    foot_size = int(input())
+    human_list.append(foot_size)
+
+skates_list.sort()
+human_list.sort(reverse=True)
+
+for human_search in human_list:
+    for skates_search in skates_list:
+        if human_search <= skates_search:
+            human_list.remove(human_search)
+            skates_list.remove(skates_search)
+            count += 1
+            break
+print('Наибольшее кол-во людей, которые могут взять ролики:', count)
+
+
