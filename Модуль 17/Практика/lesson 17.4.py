@@ -71,11 +71,26 @@ elif task == 2:
     print('=' * 40)
     print('Задача 2')
 
+    nums = [48, -10, 9, 38, 17, 50, -5, 43, 46, 12]
+
+    print(nums[:5])
+    print(nums[:-2])
+    print(nums[::2])
+    print(nums[1::2])
+    print(nums[::-1])
+    print(nums[::-2])
+
 
 elif task == 3:
     # Задача 3
     print('=' * 40)
     print('Задача 3')
 
+    import random
+    numbers = [num for num in range(10)]
+    num_1 = random.randint(2, 5)
+    num_2 = random.randint(6, 9)
+    print(num_1, num_2)
+    print(numbers[:num_1] + numbers[num_2:])
 else:
     print('Выберите задачу заново.')
