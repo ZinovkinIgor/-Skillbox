@@ -21,6 +21,27 @@ Right_i, при этом 1 ≤ Left_i ≤ Right_i ≤ N.
 Результат: I.....I...
 """
 
+import random
+
+coint_stick = int(input('Количество палок: '))
+scor_cast = int(input('Количество бросков: '))
+sticks = [x for x in range(1, coint_stick + 1)]
+print(sticks)
+# Создаем клон списка
+list_sticks = sticks[:]
+# Запускаем цикл и методом случайных чисел выбиваем палки
+for i in range(scor_cast):
+    r_i = random.randint(min(list_sticks), max(list_sticks))
+    l_i = random.randint(r_i, max(list_sticks))
+
+    print('Бросок ', i + 1, '. Сбиты палки с номерами', r_i, 'по номер ', l_i)
+    list_sticks = [x for x in list_sticks if x < r_i or x > l_i]
+    print(list_sticks)
+    new_list = ['.' if x not in list_sticks else 'I' for x in sticks]
+
+print(new_list)
+
+
 
 
 
