@@ -20,7 +20,15 @@
 Длина этого слова: 1
 """
 
-wodr = input('Введите строку: ').split()
-word_max = 0
-print('\nСамое длинное слово:', word_max)
-print('Длина этого слова:', word_max.count())
+word_list = input('Введите строку: ').split()
+count = 0
+new_word = ''
+
+for word in word_list:
+    if len(word) > len(new_word):
+        new_word = word
+        count = len(new_word)
+print('')
+
+print('\nСамое длинное слово:', new_word)
+print('Длина этого слова:', count)
