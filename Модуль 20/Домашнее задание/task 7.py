@@ -10,8 +10,18 @@ print(tpl_sort(6, 3, -1, 8, 4, 10, -5))
 Ответ в консоли: (-5, -1, 3, 4, 6, 8, 10)
 """
 
-def tpl_sort(numb):
-    pass
+def tpl_sort(number):
+    flag = False
+    for numb in number:
+        if type(numb) == int:
+            answer = sorted(list(number))
+        else:
+            flag = True
+    if flag:
+        answer = number
+    return answer
 
-
-print(tpl_sort(6, 3, -1, 8, 4, 10, -5))
+numbers = (6, 3, -1, 8, 4, 10, -5)
+numbers_1 = (6, 3, -1, 8.2, 4, 10, -5)
+print('Ответ в консоли: {}'.format(tpl_sort(numbers)))
+print('Ответ в консоли: {}'.format(tpl_sort(numbers_1)))
