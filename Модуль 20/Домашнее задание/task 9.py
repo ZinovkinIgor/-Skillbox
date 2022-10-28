@@ -49,43 +49,43 @@
 3-е место. Jack (95715)
 """
 
-def iscore(i_name):
-    for key, value in result_games.items():
-        if value == i_name:
-            return key
-
-
+"""
+Создаем словарь и заполняем его запросами
+из словаря забираем счет и сохраняем его в отсортированный список
+идем по списку и по словарю выбираем 3 победителей
+"""
 
 
 def games():
-    score = int(input('Сколько записей вносится в протокол? '))
-    print('Записи (результат и имя):')
-    for num in range(1, score + 1):
-        score_player = input('{}-я запись: '.format(num)).split()
-        if score_player[1] in result_games:
-            if int(score_player[0]) > int(result_games[score_player[1]]):
-                result_games[score_player[1]] = score_player[0]
+    result_games = dict()                                              # Создаем словарь
+    score = int(input('Сколько записей вносится в протокол? '))        # Задаем количество протоколов
+    print('Записи (результат и имя):')                                 # Шапка вывода
+    for num in range(1, score + 1):                                    # циклом проходим заданное количество раз
+        score_player = input('{}-я запись: '.format(num)).split()      # запрашиваем протокол у клиента
+        if score_player[1] in result_games:                                # если имя есть в словаре
+            if int(score_player[0]) > int(result_games[score_player[1]]):  # и если новый протокол больше старого то
+                del result_games[score_player[1]]                          # удаляем элемент из словаря, чтобы поменять порядок в выдаче
+                result_games[score_player[1]] = int(score_player[0])       # создаем новый элемент в словаре
         else:
-            result_games[score_player[1]] = score_player[0]
+            result_games[score_player[1]] = int(score_player[0])           # а если нет элемента в словаре то создаем новый
+    scor = 0                                                               # новый счетчик
+    new_val = sorted(result_games.values())                                # сортируем  новый список
+    for numb in new_val[::-1]:                                             # циклом проходим по списку с конца
+        for key, val in result_games.items():                              # вторым циклом проходим по словарю
+            if numb == val:                                                # если значение словаря равняется значению списка
+                scor += 1                                                  # увеличиваем счетчик
+                print('{scor}-е место. {name} ({count})'.format(           # выводим все на экран
+                    scor=scor,                                             #
+                    name=key,
+                    count=val
+                ))
+                result_games.pop(key)                                      # удаляем значение которое вывели на экран
+                break
+        if scor >= 3:                                                      # проверяем счетчик и завершаем цикл
+            break
 
-    list_score = [num for num in sorted(result_games.values())]
-    new_list = reversed(list_score)
-    score = 0
-    for num, i_name in enumerate(sorted(result_games.values(), reverse=True)):
-        print('{num}- место. {count} ({name})'.format(num=num + 1, name=i_name, count=iscore(i_name)))
 
-
-
-
-
-
-
-
-
-result_games = dict()
-
+# Запустили функцию
 games()
-
-
 
 
