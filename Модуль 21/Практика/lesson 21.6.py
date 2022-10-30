@@ -68,17 +68,71 @@ if task == 1:
     # Задача 1
     print('=' * 40)
 
+    def ask_func(question,
+                 answer='Неверный ввод. Пожалуйста, введите "да" или "нет"',
+                 count=4):
+        while count > 0:
+            attempt = input(question).lower()
+            if attempt == 'да':
+                return 1
+            elif attempt == 'нет':
+                return 0
+
+            print(answer)
+            count -= 1
+            print('Осталось {} попыток'.format(count))
+            if count <= 0:
+                print('Попытки закончились. Выходим.')
+                return
+
+    ask_func('Вы действительно хотите выйти?',
+             'Неверный ввод. Пожалуйста, введите "да" или "нет"',
+             4)
+    ask_func('Удалить файл?')
+    ask_func('Создать файл?', count=2)
+
+
 
 elif task == 2:
     # Задача 2
     print('=' * 40)
     print('Задача 2')
 
+    def add_num(num, list_numb=[]):
+        list_numb.append(num)
+        print(list_numb)
+
+
+    add_num(5)
+    add_num(10)
+    add_num(15)
+
 
 elif task == 3:
     # Задача 3
     print('=' * 40)
     print('Задача 3')
+
+
+    def create_dict(data, template=dict()):
+        if isinstance(data, dict):
+            return data
+        if isinstance(data, int) or isinstance(data, float) or isinstance(data, str):
+            template.clear()
+            template[data] = data
+            return template.copy()
+
+
+    def data_preparation(old_list):
+        new_list = []
+        for i_element in old_list:
+            new_list.append(create_dict(i_element))
+        return new_list
+
+
+    data = ['sad', {'sds': 23}, {43}, [12, 42, 1], 2323]
+    data = data_preparation(data)
+    print(data)
 
 else:
     print('Выберите задачу заново.')
