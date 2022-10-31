@@ -55,11 +55,15 @@ elif task == 2:
     print('=' * 40)
     print('Задача 2')
 
-    result = os.path.abspath(os.path.join('..', '..', '..', '..', '..', '..'))
-    for res in os.listdir(result):
-        print(res)
-    print(len(os.listdir(result)))
-    print(result)
+    def print_search_path(path):
+        print('Проверяем директорию {}'.format(path))
+        for name in os.listdir(path):
+            print(os.path.join(path, name))
+
+    search = ['Домашнее задание', 'Практика']
+    for name in search:
+        search_path = os.path.abspath(os.path.join('..',  name))
+        print_search_path(search_path)
 
 
 elif task == 3:
