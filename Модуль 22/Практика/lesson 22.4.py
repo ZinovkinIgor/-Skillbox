@@ -55,17 +55,48 @@ else:
     print("y = ", k, " * x + ", b)
 ****************************************
 """
+import os
 task = int(input('Выберите какую задачу выполнить (1, 2, 3): '))
 
 if task == 1:
     # Задача 1
     print('=' * 40)
+    summ = 0
+    file = open('answer.txt', 'r')
+    for numb in file:
+        summ += int(numb)
+    file.close()
 
+    file_1 = open('numbers.txt', 'w')
+    file_1.write(str(summ))
+    file_1.close()
 
 elif task == 2:
     # Задача 2
     print('=' * 40)
     print('Задача 2')
+
+
+    def search_python_basic(adress):               # проходим по папкам и проверяем файлы если это .py то записываем в скрипт
+        for name in os.listdir(adress):
+            adr_1 = os.path.abspath(os.path.join(adress, name))
+            if name.endswith('.py'):
+                file = open(adr_1, 'r', encoding='utf-8')
+                file_res = open('scripts.txt', 'a', encoding='utf-8')
+                for name in file:
+                    file_res.write(name)
+                file.close()
+                file_res.close()
+                file_res = open('scripts.txt', 'a', encoding='utf-8')
+                file_res.write('*' * 40)
+                file_res.close()
+            elif os.path.isdir(adr_1):
+                search_python_basic(adr_1)
+
+
+
+    adress = os.path.abspath(os.path.join('..', '..'))  # создаем адрес на курс
+    search_python_basic(adress)
 
 
 elif task == 3:
