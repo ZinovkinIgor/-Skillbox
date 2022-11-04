@@ -58,11 +58,11 @@ elif task == 2:
     def print_search_path(path):
         print('Проверяем директорию {}'.format(path))
         for name in os.listdir(path):
-            print(os.path.join(path, name))
+            print('    ', os.path.join(path, name))
 
-    search = ['Домашнее задание', 'Практика']
+    search = ['Программы Питон', 'Обучение парсинг']
     for name in search:
-        search_path = os.path.abspath(os.path.join('..',  name))
+        search_path = os.path.abspath(os.path.join('..', '..', '..', name))
         print_search_path(search_path)
 
 

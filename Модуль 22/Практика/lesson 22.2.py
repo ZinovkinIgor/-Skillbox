@@ -43,11 +43,42 @@ if task == 1:
     # Задача 1
     print('=' * 40)
 
+    def print_dirc(project, key):
+        print('переходим {}'.format(project))
+
+        if os.path.exists(project):
+            for name in os.listdir(project):
+                patch = os.path.join(project, name)
+                print('смотрим {}'.format(patch))
+                if os.path.isfile(patch):
+                    print('Абсолютный путь к файлу: {}'.format(patch))
+                    print('Размер файла: {} байт'.format(os.stat(patch).st_size))
+                    break
+                if os.path.isdir(patch):
+                    print('это директория: ')
+                    result = print_dirc(patch, key)
+                    if result:
+                        break
+        else:
+            print('Такой директории нет.')
+
+    search = ['lesson 22.2.py']
+    for simb in search:
+        path_dirc = os.path.abspath(os.path.join('..', '..', '..'))
+        result = print_dirc(path_dirc, simb)
+
+
 
 elif task == 2:
     # Задача 2
     print('=' * 40)
     print('Задача 2')
+
+
+    adress_project = os.path.abspath(os.path.join('..', '..'))
+    for i_path, i_dept, i_file in os.walk(adress_project):
+        print(i_dept)
+    print(adress_project)
 
 
 elif task == 3:
