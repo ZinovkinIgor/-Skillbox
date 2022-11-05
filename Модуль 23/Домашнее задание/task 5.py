@@ -42,10 +42,20 @@
 
 Сумма результатов: 157.75
 """
-def error_example(operand_1, action, operand_2):
-    res = input('Обнаружена ошибка в строке {} {} {}. Хотите ее исправить? '.format(operand_1, action, operand_2))
+def error_example(res):
+    while True:
+        if res.lower() == 'да':
+            result = input('Как изменить задачу ')
+            return decision(result)
 
-def decision(example, scor):
+        elif res.lower() == 'нет':
+            return 0
+        else:
+            print('Да или Нет.')
+            res = input('Хотите ее исправить? ')
+
+
+def decision(example):
     '''
     берем строку и делем ее на  операнды и операции
     проводим арифметические действия,
@@ -53,9 +63,9 @@ def decision(example, scor):
     '''
     answer = 0
     numbers = example.split()
-    operand_1, action, operand_2 = int(numbers[0]), numbers[1], int(numbers[2])
-    try:
 
+    try:
+        operand_1, action, operand_2 = int(numbers[0]), numbers[1], int(numbers[2])
         if action == '+':
             answer = operand_1 + operand_2
         elif action == '-':
@@ -68,31 +78,30 @@ def decision(example, scor):
             answer = operand_1 // operand_2
         elif action == '%':
             answer = operand_1 % operand_2
-        # else:
-        #     raise UnboundLocalError
+        else:
+            raise UnboundLocalError
         print(f'{operand_1} {action} {operand_2} = {answer}')
+        return answer
     except IndexError:
-        print(f'Строка {scor}. Выражение должно состоять из 3 значений.')
-        result = error_example(operand_1, action, operand_2)
+        print('Выражение должно состоять из 3 значений.')
+        res = input('Обнаружена ошибка в строке {}. Хотите ее исправить? '.format(numbers))
+        result = error_example(res)
         return result
     except ValueError:
-        print(f'Строка {scor}. Операнд не является целым числом.')
-        result = error_example(operand_1, action, operand_2)
+        print('Операнд не является целым числом.')
+        res = input('Обнаружена ошибка в строке {}. Хотите ее исправить? '.format(numbers))
+        result = error_example(res)
         return result
     except UnboundLocalError:
-        print(f'Строка {scor}. Операция введена не верно.')
-        result = error_example(operand_1, action, operand_2)
+        res = input('Обнаружена ошибка в строке {}. Хотите ее исправить? '.format(numbers))
+        result = error_example(res)
         return result
 
-    return answer
 
-
-scor = 0
 summ = 0
 with open('calc.txt', 'r') as library:
     for example in library:
-        scor += 1
-        result = decision(example, scor)
+        result = decision(example)
 
         summ += result
     print('Сумма всех верных выражений: {}'.format(summ))
