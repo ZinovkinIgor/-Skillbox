@@ -38,17 +38,45 @@ testiruyem
 
 import os
 
-text = input('Введите строку: ')
-adress = input('\nКуда хотите сохранить документ? Введите последовательность папок (через пробел):\n').split()
-name_file = input('Введите имя файла: ')
-path = os.path.abspath(os.path.sep)
-for name in adress:
-    path = os.path.join(path, name)
-print(adress)
-print(path)
+def save_file(path, text, name_file, action):
+    adress = os.path.join(path, '{}.txt'.format(name_file))
+    projects = open(adress, action, encoding='utf-8')
+    projects.write(text)
+    projects.close()
+
+
+def main():
+    text = input('Введите строку: ')
+    adress = input('\nКуда хотите сохранить документ? Введите последовательность папок (через запятую):\n').split(', ')
+    name_file = input('Введите имя файла: ')
+    path = os.path.abspath(os.path.sep)
+    for name in adress:
+        path = os.path.join(path, name)
+
+    while True:
+        if os.path.exists('{}.txt'.format(name_file)):
+            answer = input('Вы действительно хотите перезаписать файл? ').lower()
+            if answer == 'да':
+                save_file(path, text, name_file, action='w')
+                print('Файл перезаписан.')
+                break
+            elif answer == 'нет':
+                save_file(path, text, name_file, action='a')
+                print('Файл добавлен.')
+                break
+            else:
+                print('Введите да или нет.')
+        else:
+            save_file(path, text, name_file, action='w')
+            print('Файл сохранен.')
+            break
+
+
+main()
 
 
 
+# Users, User, OneDrive, Рабочий стол, Bot, Восстанавливаем обучение Python, Модуль 22, Домашнее задание
 
 
 
