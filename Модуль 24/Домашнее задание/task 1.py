@@ -17,7 +17,7 @@ class Unit:
 
     def __init__(self, name):
         self.name = name
-        voin_dict[name] = 1000
+        voin_dict[name] = 100
 
 
     def damage(self, names):

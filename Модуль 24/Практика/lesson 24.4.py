@@ -153,7 +153,7 @@ elif task == 3:
             self.potatos = [Potato(index) for index in range(1, count + 1)]
 
         def plant(self):
-            print('Картошка проростает')
+            print('Картошка прорастает')
             for i_patato in self.potatos:
                 i_patato.sprouts()
 
