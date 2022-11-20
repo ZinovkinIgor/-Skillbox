@@ -18,81 +18,77 @@ class Player:
     #   - на какую клетку ходит
 """
 
+# Проверка результата
 class Cell:
-    pass
-
+    win_coord = ((0, 1, 2),
+                 (3, 4, 5),
+                 (6, 7, 8),
+                 (0, 3, 6),
+                 (1, 4, 7),
+                 (2, 5, 8),
+                 (0, 4, 8),
+                 (2, 5, 6)
+                 )
+    def result_game(self, board, name, simbol):
+        for result in self.win_coord:
+            if board[result[0]] == board[result[1]] == board[result[2]]:
+                print('Победил {}'.format(name))
+                return True
+        return False
+# Заполняет игровое поле
 class Board:
-    board_list = range(1, 10)
-    pass
+    board_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    def print_board(self):
+        print('-' * 13)
+        for i in range(3):
+            print('|', self.board_list[0 + i * 3], '|', self.board_list[1 + i * 3], '|', self.board_list[2 + i * 3], '|')
+            print('-' * 13)
 
+    # Проверяем свободна клетка или нет, если свободна заполняем ее
+    def games(self, simbol, answer):
+        valid = False
+        while not valid:
+            if answer >= 1 and answer <= 9:
+                print(self.board_list[answer-1])
+                if self.board_list[answer-1] != ('X' or 'O'):
+                    self.board_list[answer - 1] = simbol
+                    break
+                else:
+                    answer = int(input('Эта клетка занята. Выберите свободную'))
+            else:
+                print('Вы вышли за диапазон от 1 до 9')
+                break
+
+
+# Создает игроков
 class Player:
     def __init__(self, name, simbol):
         self.name = name
         self.simbol = simbol
 
+
+# Запускает игру, каждый ход
 def main():
     user_1 = Player('Игорь', 'X')
     user_2 = Player('Олеся', 'O')
-    valid = False
-    while not valid:
+    field = Board()
+    res = Cell()
 
+    field.print_board()
+    count = 0
+    while count < 9:
+        count += 1
+        if count % 2 == 0:
+            answer = int(input('{} куда ходим'.format(user_1.name)))
+            field.games(user_1.simbol, answer)
+            end_game = res.result_game(field.board_list, user_1.name, user_1.simbol)
+        else:
+            answer = int(input('{} куда ходим'.format(user_2.name)))
+            field.games(user_2.simbol, answer)
+            end_game = res.result_game(field.board_list, user_2.name, user_2.simbol)
+
+        field.print_board()
+        if end_game:
+            break
 
 main()
-
-
-# def graw_board(board):
-#     print('-' * 13)
-#     for i in range(3):
-#         print('|', board[0 + i * 3], '|', board[1 + i * 3], '|', board[2 + i * 3], '|')
-#         print('-' * 13)
-#
-# def take_input(player_token):
-#     valid = False
-#     while not valid:
-#         player_answer = int(input('Куда поставить {}?'.format(player_token)))
-#         try:
-#             player_answer = int(player_token)
-#         except:
-#             print('Не корректный ввод. Вы уверены что ввели число?')
-#         if 1 <= int(player_answer) <= 9:
-#             if str(board[player_answer - 1]) not in "XO":
-#                 board[player_answer-1] = player_token
-#                 valid = True
-#             else:
-#                 print('Эта клетка занята.')
-#         else:
-#             print('Ошибка вы вышли за диапазон от 1 до 9')
-#
-#
-# def chek_win(board):
-#     win_coord = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 5, 6))
-#     for each in win_coord:
-#         if board[each[0]] == board[each[1]] == board[each[2]]:
-#             return board[each[0]]
-#     return False
-#
-# def main(board):
-#     counter = 0
-#     win = False
-#     while not win:
-#         graw_board(board)
-#         if counter % 2 == 0:
-#             take_input('X')
-#         else:
-#             take_input('O')
-#         counter += 1
-#         if counter > 4:
-#             tm = chek_win(board)
-#             if tm:
-#                 print('{} Победил!!!'.format(tm))
-#                 win = True
-#                 break
-#         if counter == 9:
-#             print('Ничья.')
-#             break
-#     graw_board(board)
-#
-#
-#
-# board = range(1, 10)
-# main(board)
