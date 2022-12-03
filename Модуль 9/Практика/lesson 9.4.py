@@ -46,3 +46,4 @@ number = int(input('Введите число: '))
 print(' -=- ', end='')
 for num in range(number + 1):
     print(num * 10, end=' -=- ')
+
