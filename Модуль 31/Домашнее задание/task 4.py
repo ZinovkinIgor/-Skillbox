@@ -21,6 +21,24 @@
 третий номер: не подходит
 """
 
+import re
 
+telephone = ['9999999999', '999999-999', '99999x9999','8999999999', '567887546']
+for number in telephone:
+    print(number)
+
+    if re.findall(r'\b[89]\d{9}\b', number):
+        print('Телефон подходит')
+    else:
+        print('Телефон не подходит')
+
+# Второй вариант вводим сами
+print('=' * 50)
+number_telephone = input('Введите номер телефона: ')
+
+if re.findall(r'\b[89]\d{9}\b', number_telephone):
+    print('Телефон подходит')
+else:
+    print('Телефон не подходит')
 
 
